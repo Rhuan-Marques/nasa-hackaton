@@ -25,7 +25,7 @@ def swap_triple_spaces_with_commas(line):
 
 def main():
 
-    filename = "Datasets/Dataset1/s_OSD-379.csv"
+    filename = "Datasets/Dataset2/s_OSD-665.csv"
 
     with open(filename, 'r', encoding='utf-8') as f:
         lines = f.readlines()
