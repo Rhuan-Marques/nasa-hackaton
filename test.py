@@ -1,8 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
-df = pd.read_csv('Datasets/Dataset1/s_OSD-379.csv', delimiter='\t')
+file_path = "Dataset1/s_OSD-379.csv"
+
+df = pd.read_csv(f'Datasets/{file_path}', delimiter='\t')
 
 print("Primeiras linhas do DataFrame:")
 print(df.head())
@@ -34,5 +37,7 @@ plt.ylabel('Contagem')
 plt.xticks(rotation=45)
 plt.show()
 
-df_selecionado.to_csv('csv_limpo.csv', index=False)
+output_path = f'outputs/{file_path}'
+os.makedirs("/".join(output_path.split('/')[:-1]), exist_ok=True)
+df_selecionado.to_csv(output_path, index=False)
 print("\nDataFrame limpo salvo como 'csv_limpo.csv'.")

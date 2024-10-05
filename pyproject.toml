@@ -7,6 +7,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+<<<<<<< HEAD
+=======
+pydantic = "^2.9.2"
+>>>>>>> 12a2697d736417743b60c95e3d75ae25eb26c86b
 pandas = "^2.2.3"
 matplotlib = "^3.9.2"
 seaborn = "^0.13.2"
