@@ -1,2 +1,2 @@
 # nasa-hackaton
-# Projeto criado para o NASA SPACE Apps Challenge
+# Projeto criado para o NASA SPACE Apps Challnge
