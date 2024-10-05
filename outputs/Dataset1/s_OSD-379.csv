@@ -1,0 +1,142 @@
+Source Name,Sample Name,Characteristics[Organism],Characteristics[Sex],Factor Value[Age],Factor Value[Duration]
+BL_ISS_01,RR8_LVR_BSL_ISS-T_OLD_BI1,Mus musculus,Female,32,0
+BL_ISS_02,RR8_LVR_BSL_ISS-T_OLD_BI2,Mus musculus,Female,32,0
+BL_ISS_03,RR8_LVR_BSL_ISS-T_OLD_BI3,Mus musculus,Female,32,0
+BL_ISS_04,RR8_LVR_BSL_ISS-T_OLD_BI4,Mus musculus,Female,32,0
+BL_ISS_05,RR8_LVR_BSL_ISS-T_OLD_BI5,Mus musculus,Female,32,0
+BL_ISS_06,RR8_LVR_BSL_ISS-T_OLD_BI6,Mus musculus,Female,32,0
+BL_ISS_07,RR8_LVR_BSL_ISS-T_OLD_BI7,Mus musculus,Female,32,0
+BL_ISS_08,RR8_LVR_BSL_ISS-T_OLD_BI8,Mus musculus,Female,32,0
+BL_ISS_09,RR8_LVR_BSL_ISS-T_OLD_BI9,Mus musculus,Female,32,0
+BL_ISS_11,RR8_LVR_BSL_ISS-T_YNG_BI11,Mus musculus,Female,10 to 12,0
+BL_ISS_12,RR8_LVR_BSL_ISS-T_YNG_BI12,Mus musculus,Female,10 to 12,0
+BL_ISS_13,RR8_LVR_BSL_ISS-T_YNG_BI13,Mus musculus,Female,10 to 12,0
+BL_ISS_14,RR8_LVR_BSL_ISS-T_YNG_BI14,Mus musculus,Female,10 to 12,0
+BL_ISS_15,RR8_LVR_BSL_ISS-T_YNG_BI15,Mus musculus,Female,10 to 12,0
+BL_ISS_16,RR8_LVR_BSL_ISS-T_YNG_BI16,Mus musculus,Female,10 to 12,0
+BL_ISS_17,RR8_LVR_BSL_ISS-T_YNG_BI17,Mus musculus,Female,10 to 12,0
+BL_ISS_18,RR8_LVR_BSL_ISS-T_YNG_BI18,Mus musculus,Female,10 to 12,0
+BL_ISS_19,RR8_LVR_BSL_ISS-T_YNG_BI19,Mus musculus,Female,10 to 12,0
+BL_ISS_20,RR8_LVR_BSL_ISS-T_YNG_BI20,Mus musculus,Female,10 to 12,0
+BL_LAR_01,RR8_LVR_BSL_LAR_YNG_BL1,Mus musculus,Female,10 to 12,0
+BL_LAR_02,RR8_LVR_BSL_LAR_YNG_BL2,Mus musculus,Female,10 to 12,0
+BL_LAR_04,RR8_LVR_BSL_LAR_YNG_BL4,Mus musculus,Female,10 to 12,0
+BL_LAR_05,RR8_LVR_BSL_LAR_YNG_BL5,Mus musculus,Female,10 to 12,0
+BL_LAR_06,RR8_LVR_BSL_LAR_YNG_BL6,Mus musculus,Female,10 to 12,0
+BL_LAR_07,RR8_LVR_BSL_LAR_YNG_BL7,Mus musculus,Female,10 to 12,0
+BL_LAR_08,RR8_LVR_BSL_LAR_YNG_BL8,Mus musculus,Female,10 to 12,0
+BL_LAR_09,RR8_LVR_BSL_LAR_YNG_BL9,Mus musculus,Female,10 to 12,0
+BL_LAR_10,RR8_LVR_BSL_LAR_YNG_BL10,Mus musculus,Female,10 to 12,0
+BL_LAR_11,RR8_LVR_BSL_LAR_OLD_BL11,Mus musculus,Female,32,0
+BL_LAR_12,RR8_LVR_BSL_LAR_OLD_BL12,Mus musculus,Female,32,0
+BL_LAR_13,RR8_LVR_BSL_LAR_OLD_BL13,Mus musculus,Female,32,0
+BL_LAR_14,RR8_LVR_BSL_LAR_OLD_BL14,Mus musculus,Female,32,0
+BL_LAR_15,RR8_LVR_BSL_LAR_OLD_BL15,Mus musculus,Female,32,0
+BL_LAR_16,RR8_LVR_BSL_LAR_OLD_BL16,Mus musculus,Female,32,0
+BL_LAR_17,RR8_LVR_BSL_LAR_OLD_BL17,Mus musculus,Female,32,0
+BL_LAR_18,RR8_LVR_BSL_LAR_OLD_BL18,Mus musculus,Female,32,0
+BL_LAR_19,RR8_LVR_BSL_LAR_OLD_BL19,Mus musculus,Female,32,0
+BL_LAR_20,RR8_LVR_BSL_LAR_OLD_BL20,Mus musculus,Female,32,0
+FL_ISS_01,RR8_LVR_FLT_ISS-T_YNG_FI1,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_02,RR8_LVR_FLT_ISS-T_YNG_FI2,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_03,RR8_LVR_FLT_ISS-T_YNG_FI3,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_04,RR8_LVR_FLT_ISS-T_YNG_FI4,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_05,RR8_LVR_FLT_ISS-T_YNG_FI5,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_06,RR8_LVR_FLT_ISS-T_YNG_FI6,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_07,RR8_LVR_FLT_ISS-T_YNG_FI7,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_08,RR8_LVR_FLT_ISS-T_YNG_FI8,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_09,RR8_LVR_FLT_ISS-T_YNG_FI9,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_10,RR8_LVR_FLT_ISS-T_YNG_FI10,Mus musculus,Female,10 to 12,22 to 23
+FL_ISS_11,RR8_LVR_FLT_ISS-T_OLD_FI11,Mus musculus,Female,32,22 to 23
+FL_ISS_12,RR8_LVR_FLT_ISS-T_OLD_FI12,Mus musculus,Female,32,22 to 23
+FL_ISS_13,RR8_LVR_FLT_ISS-T_OLD_FI13,Mus musculus,Female,32,22 to 23
+FL_ISS_14,RR8_LVR_FLT_ISS-T_OLD_FI14,Mus musculus,Female,32,22 to 23
+FL_ISS_15,RR8_LVR_FLT_ISS-T_OLD_FI15,Mus musculus,Female,32,22 to 23
+FL_ISS_16,RR8_LVR_FLT_ISS-T_OLD_FI16,Mus musculus,Female,32,22 to 23
+FL_ISS_17,RR8_LVR_FLT_ISS-T_OLD_FI17,Mus musculus,Female,32,22 to 23
+FL_ISS_18,RR8_LVR_FLT_ISS-T_OLD_FI18,Mus musculus,Female,32,22 to 23
+FL_ISS_19,RR8_LVR_FLT_ISS-T_OLD_FI19,Mus musculus,Female,32,22 to 23
+FL_ISS_20,RR8_LVR_FLT_ISS-T_OLD_FI20,Mus musculus,Female,32,22 to 23
+FL_LAR_01,RR8_LVR_FLT_LAR_YNG_FL1,Mus musculus,Female,10 to 12,~40
+FL_LAR_02,RR8_LVR_FLT_LAR_YNG_FL2,Mus musculus,Female,10 to 12,~40
+FL_LAR_03,RR8_LVR_FLT_LAR_OLD_FL3,Mus musculus,Female,32,~40
+FL_LAR_04,RR8_LVR_FLT_LAR_OLD_FL4,Mus musculus,Female,32,~40
+FL_LAR_05,RR8_LVR_FLT_LAR_YNG_FL5,Mus musculus,Female,10 to 12,~40
+FL_LAR_06,RR8_LVR_FLT_LAR_YNG_FL6,Mus musculus,Female,10 to 12,~40
+FL_LAR_07,RR8_LVR_FLT_LAR_OLD_FL7,Mus musculus,Female,32,~40
+FL_LAR_08,RR8_LVR_FLT_LAR_OLD_FL8,Mus musculus,Female,32,~40
+FL_LAR_11,RR8_LVR_FLT_LAR_OLD_FL11,Mus musculus,Female,32,~40
+FL_LAR_13,RR8_LVR_FLT_LAR_YNG_FL13,Mus musculus,Female,10 to 12,~40
+FL_LAR_14,RR8_LVR_FLT_LAR_YNG_FL14,Mus musculus,Female,10 to 12,~40
+FL_LAR_15,RR8_LVR_FLT_LAR_OLD_FL15,Mus musculus,Female,32,~40
+FL_LAR_16,RR8_LVR_FLT_LAR_OLD_FL16,Mus musculus,Female,32,~40
+FL_LAR_17,RR8_LVR_FLT_LAR_YNG_FL17,Mus musculus,Female,10 to 12,~40
+FL_LAR_18,RR8_LVR_FLT_LAR_YNG_FL18,Mus musculus,Female,10 to 12,~40
+HC_ISS_01,RR8_LVR_GC_ISS-T_YNG_GI1,Mus musculus,Female,10 to 12,24
+HC_ISS_02,RR8_LVR_GC_ISS-T_YNG_GI2,Mus musculus,Female,10 to 12,24
+HC_ISS_03,RR8_LVR_GC_ISS-T_YNG_GI3,Mus musculus,Female,10 to 12,24
+HC_ISS_04,RR8_LVR_GC_ISS-T_YNG_GI4,Mus musculus,Female,10 to 12,24
+HC_ISS_05,RR8_LVR_GC_ISS-T_YNG_GI5,Mus musculus,Female,10 to 12,24
+HC_ISS_06,RR8_LVR_GC_ISS-T_YNG_GI6,Mus musculus,Female,10 to 12,24
+HC_ISS_07,RR8_LVR_GC_ISS-T_YNG_GI7,Mus musculus,Female,10 to 12,24
+HC_ISS_08,RR8_LVR_GC_ISS-T_YNG_GI8,Mus musculus,Female,10 to 12,24
+HC_ISS_09,RR8_LVR_GC_ISS-T_YNG_GI9,Mus musculus,Female,10 to 12,24
+HC_ISS_10,RR8_LVR_GC_ISS-T_YNG_GI10,Mus musculus,Female,10 to 12,24
+HC_ISS_11,RR8_LVR_GC_ISS-T_OLD_GI11,Mus musculus,Female,32,24
+HC_ISS_12,RR8_LVR_GC_ISS-T_OLD_GI12,Mus musculus,Female,32,24
+HC_ISS_13,RR8_LVR_GC_ISS-T_OLD_GI13,Mus musculus,Female,32,24
+HC_ISS_14,RR8_LVR_GC_ISS-T_OLD_GI14,Mus musculus,Female,32,24
+HC_ISS_15,RR8_LVR_GC_ISS-T_OLD_GI15,Mus musculus,Female,32,24
+HC_ISS_16,RR8_LVR_GC_ISS-T_OLD_GI16,Mus musculus,Female,32,24
+HC_ISS_17,RR8_LVR_GC_ISS-T_OLD_GI17,Mus musculus,Female,32,24
+HC_ISS_18,RR8_LVR_GC_ISS-T_OLD_GI18,Mus musculus,Female,32,24
+HC_ISS_19,RR8_LVR_GC_ISS-T_OLD_GI19,Mus musculus,Female,32,24
+HC_ISS_20,RR8_LVR_GC_ISS-T_OLD_GI20,Mus musculus,Female,32,24
+HC_LAR_01,RR8_LVR_GC_LAR_YNG_GL1,Mus musculus,Female,10 to 12,~40
+HC_LAR_02,RR8_LVR_GC_LAR_YNG_GL2,Mus musculus,Female,10 to 12,~40
+HC_LAR_03,RR8_LVR_GC_LAR_OLD_GL3,Mus musculus,Female,32,~40
+HC_LAR_04,RR8_LVR_GC_LAR_OLD_GL4,Mus musculus,Female,32,~40
+HC_LAR_05,RR8_LVR_GC_LAR_YNG_GL5,Mus musculus,Female,10 to 12,~40
+HC_LAR_06,RR8_LVR_GC_LAR_YNG_GL6,Mus musculus,Female,10 to 12,~40
+HC_LAR_07,RR8_LVR_GC_LAR_OLD_GL7,Mus musculus,Female,32,~40
+HC_LAR_08,RR8_LVR_GC_LAR_OLD_GL8,Mus musculus,Female,32,~40
+HC_LAR_11,RR8_LVR_GC_LAR_OLD_GL11,Mus musculus,Female,32,~40
+HC_LAR_12,RR8_LVR_GC_LAR_OLD_GL12,Mus musculus,Female,32,~40
+HC_LAR_13,RR8_LVR_GC_LAR_YNG_GL13,Mus musculus,Female,10 to 12,~40
+HC_LAR_14,RR8_LVR_GC_LAR_YNG_GL14,Mus musculus,Female,10 to 12,~40
+HC_LAR_15,RR8_LVR_GC_LAR_OLD_GL15,Mus musculus,Female,32,~40
+HC_LAR_17,RR8_LVR_GC_LAR_YNG_GL17,Mus musculus,Female,10 to 12,~40
+HC_LAR_18,RR8_LVR_GC_LAR_YNG_GL18,Mus musculus,Female,10 to 12,~40
+VC_ISS_01,RR8_LVR_VIV_ISS-T_YNG_VI1,Mus musculus,Female,10 to 12,23
+VC_ISS_02,RR8_LVR_VIV_ISS-T_YNG_VI2,Mus musculus,Female,10 to 12,23
+VC_ISS_03,RR8_LVR_VIV_ISS-T_YNG_VI3,Mus musculus,Female,10 to 12,23
+VC_ISS_04,RR8_LVR_VIV_ISS-T_YNG_VI4,Mus musculus,Female,10 to 12,23
+VC_ISS_05,RR8_LVR_VIV_ISS-T_YNG_VI5,Mus musculus,Female,10 to 12,23
+VC_ISS_06,RR8_LVR_VIV_ISS-T_YNG_VI6,Mus musculus,Female,10 to 12,23
+VC_ISS_07,RR8_LVR_VIV_ISS-T_YNG_VI7,Mus musculus,Female,10 to 12,23
+VC_ISS_08,RR8_LVR_VIV_ISS-T_YNG_VI8,Mus musculus,Female,10 to 12,23
+VC_ISS_10,RR8_LVR_VIV_ISS-T_YNG_VI10,Mus musculus,Female,10 to 12,23
+VC_ISS_11,RR8_LVR_VIV_ISS-T_OLD_VI11,Mus musculus,Female,32,23
+VC_ISS_12,RR8_LVR_VIV_ISS-T_OLD_VI12,Mus musculus,Female,32,23
+VC_ISS_13,RR8_LVR_VIV_ISS-T_OLD_VI13,Mus musculus,Female,32,23
+VC_ISS_14,RR8_LVR_VIV_ISS-T_OLD_VI14,Mus musculus,Female,32,23
+VC_ISS_16,RR8_LVR_VIV_ISS-T_OLD_VI16,Mus musculus,Female,32,23
+VC_ISS_17,RR8_LVR_VIV_ISS-T_OLD_VI17,Mus musculus,Female,32,23
+VC_ISS_18,RR8_LVR_VIV_ISS-T_OLD_VI18,Mus musculus,Female,32,23
+VC_ISS_19,RR8_LVR_VIV_ISS-T_OLD_VI19,Mus musculus,Female,32,23
+VC_LAR_01,RR8_LVR_VIV_LAR_YNG_VL1,Mus musculus,Female,10 to 12,~40
+VC_LAR_02,RR8_LVR_VIV_LAR_YNG_VL2,Mus musculus,Female,10 to 12,~40
+VC_LAR_04,RR8_LVR_VIV_LAR_OLD_VL4,Mus musculus,Female,32,~40
+VC_LAR_05,RR8_LVR_VIV_LAR_YNG_VL5,Mus musculus,Female,10 to 12,~40
+VC_LAR_07,RR8_LVR_VIV_LAR_OLD_VL7,Mus musculus,Female,32,~40
+VC_LAR_08,RR8_LVR_VIV_LAR_OLD_VL8,Mus musculus,Female,32,~40
+VC_LAR_09,RR8_LVR_VIV_LAR_YNG_VL9,Mus musculus,Female,10 to 12,~40
+VC_LAR_10,RR8_LVR_VIV_LAR_YNG_VL10,Mus musculus,Female,10 to 12,~40
+VC_LAR_11,RR8_LVR_VIV_LAR_OLD_VL11,Mus musculus,Female,32,~40
+VC_LAR_12,RR8_LVR_VIV_LAR_OLD_VL12,Mus musculus,Female,32,~40
+VC_LAR_14,RR8_LVR_VIV_LAR_YNG_VL14,Mus musculus,Female,10 to 12,~40
+VC_LAR_15,RR8_LVR_VIV_LAR_OLD_VL15,Mus musculus,Female,32,~40
+VC_LAR_16,RR8_LVR_VIV_LAR_OLD_VL16,Mus musculus,Female,32,~40
+VC_LAR_17,RR8_LVR_VIV_LAR_YNG_VL17,Mus musculus,Female,10 to 12,~40
+VC_LAR_18,RR8_LVR_VIV_LAR_YNG_VL18,Mus musculus,Female,10 to 12,~40
+VC_LAR_20,RR8_LVR_VIV_LAR_OLD_VL20,Mus musculus,Female,32,~40
