@@ -7,8 +7,6 @@ def check_delimiter_consistency(lines, delimiter):
     return len(set(counts)) == 1  and counts[0] > 0
 
 def swap_commas_and_semicolons(line):
-    # Escape backslashes first
-    line = line.replace('\\', '\\\\')
     # Temporarily replace semicolons to avoid conflict during replacement
     line = line.replace(';', '__SEMICOLON__')
     # Replace commas with semicolons
