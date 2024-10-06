@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-def load_data(uploaded_file):
+def load_data(uploaded_file) -> pd.DataFrame:
     """
     Load the CSV data from the uploaded file.
     

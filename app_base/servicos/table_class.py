@@ -3,6 +3,7 @@ from typing import Optional
 from enum import Enum
 import os
 from functools import cached_property
+import pandas as pd
 
 class ColumnType(str, Enum):
     Int = "int"
@@ -82,9 +83,22 @@ class Table(BaseModel):
 
         return cls(columns=columns)
     
+    # Returns the list of columns of a certain type
+    @cached_property
+    def numeric_columns(self) -> list[str]:
+        return [column.name for column in self.columns if column.value_type == ColumnType.Int or column.value_type == ColumnType.Float]
+    
     @cached_property
     def column_dict(self) -> dict[str, Column]:
         return {column.name: column for column in self.columns}
+    
+    @classmethod
+    def from_dataframe(cls, df: pd.DataFrame) -> 'Table':
+        columns = []
+        for column_name in df.columns:
+            column = Column(name=column_name, values=df[column_name].tolist())
+            columns.append(column)
+        return cls(columns=columns)
 
 
 def create_table_object(filename: str) -> Table:
