@@ -4,15 +4,17 @@ from enum import Enum
 import os
 from functools import cached_property
 import pandas as pd
+import math
 
 class ColumnType(str, Enum):
     Int = "int"
     Float = "float"
     String = "string"
+    Empty = "empty"
 
 class Column(BaseModel):
     name: str = ""
-    values: list[str]|list[int]|list[float] = []
+    values: list[str]|list[int]|list[float]|list[None] = []
 
     @field_validator('values') 
     @classmethod
@@ -22,16 +24,18 @@ class Column(BaseModel):
         if type(values[0]) == str:
             if all([str(val).isdigit() for val in values]):
                 values = [int(val) for val in values]
-            else:
-                try:
-                    values = [float(val) for val in values]
-                except ValueError:
-                    pass
-        
+            elif all([val.replace(".", "", 1).isdigit() for val in values]):
+                values = [float(val) for val in values]
+        elif all([type(val) == float and math.isnan(val) for val in values]):
+            values = [None for val in values]
         return values
 
     @computed_field
     def value_type(self) -> ColumnType:
+        if all(not val for val in self.values):
+            return ColumnType.Empty
+        if type(self.values[0]) == type(None):
+            return ColumnType.Empty
         if type(self.values[0]) == int:
             return ColumnType.Int
         if type(self.values[0]) == float:
@@ -44,13 +48,13 @@ class Column(BaseModel):
     
     @computed_field
     def media(self) -> Optional[float]:
-        if self.value_type == ColumnType.String:
+        if self.value_type == ColumnType.String or self.value_type == ColumnType.Empty:
             return None
         return sum([float(val) for val in self.values]) / len(self.values)
     
     @computed_field
     def mediana(self) -> Optional[float]:
-        if self.value_type == ColumnType.String:
+        if self.value_type == ColumnType.String or self.value_type == ColumnType.Empty:
             return None
         sorted_values = sorted(self.values)
         mid = len(sorted_values) // 2
@@ -99,17 +103,3 @@ class Table(BaseModel):
             column = Column(name=column_name, values=df[column_name].tolist())
             columns.append(column)
         return cls(columns=columns)
-
-
-def create_table_object(filename: str) -> Table:
-    table = Table.from_csv(filename)
-
-    os.makedirs('outputs/table_objects', exist_ok=True)
-    output_path = os.path.join('outputs/table_objects', os.path.basename(filename).split(".")[0] + ".json")
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.writelines(table.model_dump_json())
-    return
-    
-
-if __name__ == "__main__":
-    create_table_object("outputs/parser/a_OSD-379_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq.csv")
