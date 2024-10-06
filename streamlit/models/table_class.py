@@ -2,6 +2,7 @@ from pydantic import BaseModel, computed_field, field_validator
 from typing import Optional
 from enum import Enum
 import os
+from functools import cached_property
 
 class ColumnType(str, Enum):
     Int = "int"
@@ -60,6 +61,14 @@ class Column(BaseModel):
 class Table(BaseModel):
     columns: list[Column] = []
 
+    @field_validator('columns')
+    @classmethod
+    def validate_repeated_column_names(cls, columns, other_info):
+        names = [column.name for column in columns]
+        if len(names) != len(set(names)):
+            raise ValueError('Column names must be unique')
+        return columns
+
     @classmethod
     def from_csv(cls, filename: str) -> 'Table':
         with open(filename, 'r', encoding='utf-8') as f:
@@ -72,6 +81,10 @@ class Table(BaseModel):
             columns.append(column)
 
         return cls(columns=columns)
+    
+    @cached_property
+    def column_dict(self) -> dict[str, Column]:
+        return {column.name: column for column in self.columns}
 
 
 def create_table_object(filename: str) -> Table:

@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from statsmodels.tsa.seasonal import seasonal_decompose
+from table_class import ColumnType, Column, Table, create_table_object
 
 class TimeSeries:
     def __init__(self, data, timestamps, frequency=None):
@@ -90,3 +91,18 @@ class TimeSeries:
         valid_error = self.calculate_error()[~np.isnan(self.calculate_error())]
         error_std_dev = np.std(valid_error)
         return error_std_dev
+    
+    @classmethod
+    def from_table(table: Table, time_field: str, value_fields: list[str], frequency: int) -> 'TimeSeries':
+        if time_field not in table.columns:
+            raise ValueError("Time field not found in table")
+        if not all([field in table.columns for field in value_fields]):
+            raise ValueError("Value field not found in table")
+        if table.column_dict[time_field].value_type not in [ColumnType.Int, ColumnType.Float]:
+            raise ValueError("Time field must be numeric")
+        if not all([table.column_dict[field].value_type in [ColumnType.Int, ColumnType.Float] for field in value_fields]):
+            raise ValueError("Value fields must be numeric to be used in time series")
+        timestamps = np.array(table.column_dict[time_field].values)
+        values = np.array([np.array(table.column_dict[field].values) for field in value_fields])
+
+        return TimeSeries(timestamps=timestamps, values=values, frequency=frequency)
