@@ -100,6 +100,7 @@ class Table(BaseModel):
     def from_dataframe(cls, df: pd.DataFrame) -> 'Table':
         columns = []
         for column_name in df.columns:
-            column = Column(name=column_name, values=df[column_name].tolist())
+
+            column = Column(name=column_name, values=[val if type(val) == str else "" for val in df[column_name]])
             columns.append(column)
         return cls(columns=columns)
