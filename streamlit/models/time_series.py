@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from statsmodels.tsa.seasonal import seasonal_decompose
-from table_class import ColumnType, Column, Table, create_table_object
+from .table_class import ColumnType, Column, Table, create_table_object
 
 class TimeSeries:
     def __init__(self, data, timestamps, frequency=None):
