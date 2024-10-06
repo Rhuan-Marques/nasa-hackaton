@@ -110,7 +110,7 @@ class MultipleLinearRegression:
         
         num_plots = self.errors.shape[1]
         
-        plt.figure(figsize=(10, 5 * num_plots))
+        fig = plt.figure(figsize=(10, min(5 * num_plots, 5*50)))
         
         for i in range(num_plots):
             plt.subplot(num_plots, 1, i + 1)
@@ -122,6 +122,8 @@ class MultipleLinearRegression:
         
         plt.tight_layout()
         plt.show()
+        return fig
+    
     def QQ_plot(self):
         """
         Generates a QQ plot of the residuals.
@@ -133,7 +135,7 @@ class MultipleLinearRegression:
         
         num_plots = self.errors.shape[1]
         
-        plt.figure(figsize=(10, 5 * num_plots))
+        fig = plt.figure(figsize=(10, min(5 * num_plots, 5*50)))
         
         for i in range(num_plots):
             plt.subplot(num_plots, 1, i + 1)
@@ -142,6 +144,7 @@ class MultipleLinearRegression:
         
         plt.tight_layout()
         plt.show()
+        return fig
 
     @classmethod
     def from_table(cls, table: Table, columns_x: list[str], columns_y: list[str]) -> 'MultipleLinearRegression':
