@@ -1,9 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D 
+from mpl_toolkits.mplot3d import Axes3D
+from enum import Enum
+
+class Kernel(Enum):
+    LINEAR = 'linear'
+    POLYNOMIAL = 'poly'
+    RADIAL = 'rbf'
+    SIGMOID = 'sigmoid'
+    PRECOMP = 'precomputed'
+
 
 class SupportVectorRegression3D:
-    def __init__(self, X: np.array, Y: np.array, kernel='linear', C=1.0, epsilon=0.1):
+    def __init__(self, X: np.array, Y: np.array, kernel: Kernel = 'linear', C=1.0, epsilon=0.1):
         if X.ndim != 2:
             raise ValueError("Predictor matrix X must be a 2D array.")
         
