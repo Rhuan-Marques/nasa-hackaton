@@ -11,6 +11,7 @@ import tempfile  # Para trabalhar com arquivos temporários
 import os  # Para verificar a existência de arquivos
 from servicos.time_series import TimeSeries
 from servicos.table_class import Table
+from servicos.multiple_linear_regression import MultipleLinearRegression
 
 
 def contains_link(series):
@@ -82,7 +83,7 @@ def main():
                 fig_obj = plt.figure(fig)  # Obtém a figura específica
                 st.pyplot(fig_obj)  # Exibe a figura no Streamlit
 
-            # Seção para seleção de colunas e geração de gráficos
+            # Seção para seleção de colunas e geração de gráficos   
             st.subheader("Plot Relationships Between Variables")
 
             # Obtenha a lista de colunas disponíveis
@@ -139,6 +140,19 @@ def main():
                 serie.plot()
                 st.pyplot()
 
+            st.subheader("Plot multiple linear regression")
+
+            # Verifica se há colunas numéricas para executar a regressão linear
+            linear_regression_x = st.multiselect("Select x columns for linear regression", table.numeric_columns)
+            linear_regression_y = st.multiselect("Select y columns for linear regression", table.numeric_columns)
+
+            if not linear_regression_x or not linear_regression_y:
+                st.warning("Please select x and y columns for linear regression.")
+            else:
+                mlr = MultipleLinearRegression.from_table(table, linear_regression_x, linear_regression_y)
+                mlr.fit()
+                fig = mlr.plot()
+                st.pyplot(fig)
 
 if __name__ == "__main__":
     main()

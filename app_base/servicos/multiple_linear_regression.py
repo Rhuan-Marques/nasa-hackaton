@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from .table_class import Table
 
 class MultipleLinearRegression:
     def __init__(self, X: np.array, Y: np.array):
@@ -74,6 +75,7 @@ class MultipleLinearRegression:
             raise ValueError("The model must be fitted before accessing coefficients.")
         
         return self.intercept, self.coefficients
+    
     def plot(self):
         """
         Plots the actual vs. predicted values for each response variable.
@@ -84,7 +86,7 @@ class MultipleLinearRegression:
         predictions = self.predict(self.X)
         num_plots = self.Y.shape[1]
         
-        plt.figure(figsize=(10, 5 * num_plots))
+        fig = plt.figure(figsize=(10, min(5 * num_plots, 5*50)))
         
         for i in range(num_plots):
             plt.subplot(num_plots, 1, i + 1)
@@ -97,6 +99,8 @@ class MultipleLinearRegression:
         
         plt.tight_layout()
         plt.show()
+        return fig
+
     def plot_residuals(self):
         """
         Plots the residuals for each response variable.
@@ -138,3 +142,15 @@ class MultipleLinearRegression:
         
         plt.tight_layout()
         plt.show()
+
+    @classmethod
+    def from_table(cls, table: Table, columns_x: list[str], columns_y: list[str]) -> 'MultipleLinearRegression':
+        if not all([column in table.numeric_columns for column in columns_x]):
+            raise ValueError("All columns in X must be numeric.")
+        if not all([column in table.numeric_columns for column in columns_y]):
+            raise ValueError("All columns in Y must be numeric.")
+        x = np.array([table.column_dict[column].values for column in columns_x])
+        y = np.array([table.column_dict[column].values for column in columns_y])
+        return cls(X=x, Y=y)
+
+        
