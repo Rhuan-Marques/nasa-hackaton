@@ -10,18 +10,13 @@ class ColumnType(str, Enum):
 
 class Column(BaseModel):
     name: str = ""
-    values: list[str|int|float] = []
+    values: list[str]|list[int]|list[float] = []
 
     @field_validator('values') 
     @classmethod
     def getvalues(cls, values, other_info):
         if not values:
             raise ValueError('values cannot be empty')
-        types = set([type(val) for val in values])
-        if len(types) > 1:
-            raise ValueError('values must be of the same type')
-        if type(values[0]) not in [str, int, float]:
-            raise ValueError('values must be of type str, int or float')
         if type(values[0]) == str:
             if all([str(val).isdigit() for val in values]):
                 values = [int(val) for val in values]
