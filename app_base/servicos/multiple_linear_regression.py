@@ -1,20 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.stats as stats
 from .table_class import Table
-
 class MultipleLinearRegression:
     def __init__(self, X: np.array, Y: np.array):
-        # Verify that X is a 2D matrix
         if X.ndim != 2:
             raise ValueError("Predictor matrix X must be a 2D array.")
         
-        # Verifica se Y é uma matriz 2D
         if Y.ndim != 2:
             raise ValueError("Response matrix Y must be a 2D array.")
         
-        # verify that the number of samples in X and Y are the same
-        if X.shape[0] != Y.shape[0]:
-            raise ValueError("The number of samples in X and Y must be the same.")
+        # if X.shape[0] != Y.shape[0]:
+        #     raise ValueError("The number of samples in X and Y must be the same.")
         
         self.X = X
         self.Y = Y
@@ -24,127 +21,99 @@ class MultipleLinearRegression:
         self.errors = None
         self.squared_errors = None
 
-    def calculateErrors(self):
-        """
-        Calculates the residuals, squared residuals, and the standard deviation of the error.
-        """
-        predictions = self.predict(self.X)
-        self.errors = self.Y - predictions
-        self.squared_errors = self.errors ** 2
-        self.std_dev_error = np.std(self.errors, axis=0)
-    
     def fit(self):
-        # add intercept to X matrix (column of 1s)
         X_with_intercept = self.X
-
-        # calculate coefficients using the normal equation
         self.coefficients = np.linalg.pinv(X_with_intercept.T @ X_with_intercept) @ X_with_intercept.T @ self.Y
-        
-        # split coefficients into intercept and feature coefficients
-        self.intercept = self.coefficients[0]  # intercept is the first coefficient
-        self.coefficients = self.coefficients[1:]  # remaining coefficients are the feature coefficients
-        
-        
+        self.intercept = self.coefficients[0]
+        self.coefficients = self.coefficients[1:]
         self.fitted = True
-        
+
     def predict(self, X_new):
         if not self.fitted:
             raise ValueError("The model has not been fitted yet.")
         
-        # retur the predicted values
         return self.intercept + X_new[:, 1:] @ self.coefficients
 
     def calculate_errors(self):
-        """
-        Calculates the residuals, squared residuals, and the standard deviation of the error.
-        """
         predictions = self.predict(self.X)
         self.errors = self.Y - predictions
         self.squared_errors = self.errors ** 2
         self.std_dev_error = np.std(self.errors, axis=0)
 
-    def get_coefficients(self):
-        """
-        Returns the intercept and coefficients of the fitted model.
-        
-        Returns:
-        - intercept (1D np.array): The intercept for each response variable.
-        - coefficients (2D np.array): The coefficients for each predictor for each response variable.
-        """
-        if not self.fitted:
-            raise ValueError("The model must be fitted before accessing coefficients.")
-        
-        return self.intercept, self.coefficients
-    
     def plot(self):
         """
-        Plots the actual vs. predicted values for each response variable.
+        Plots a simple actual vs. predicted values for each response variable.
         """
         if not self.fitted:
             raise ValueError("The model must be fitted before plotting.")
         
         predictions = self.predict(self.X)
-        num_plots = self.Y.shape[1]
-        
-        fig = plt.figure(figsize=(10, min(5 * num_plots, 5*50)))
-        
-        for i in range(num_plots):
-            plt.subplot(num_plots, 1, i + 1)
-            plt.plot(self.Y[:, i], label='Actual')
-            plt.plot(predictions[:, i], label='Predicted', linestyle='--')
-            plt.xlabel('Sample')
-            plt.ylabel(f'Response Variable {i + 1}')
-            plt.title(f'Response Variable {i + 1}: Actual vs Predicted')
-            plt.legend()
-        
-        plt.tight_layout()
+        plt.figure(figsize=(10, 5))
+        plt.plot(self.Y, label='Actual', marker='o')
+        plt.plot(predictions, label='Predicted', linestyle='--', marker='x')
+        plt.title('Actual vs Predicted')
+        plt.xlabel('Sample')
+        plt.ylabel('Response Variable')
+        plt.legend()
+        plt.grid(True)
         plt.show()
-        return fig
 
     def plot_residuals(self):
-        """
-        Plots the residuals for each response variable.
-        """
         if self.errors is None:
             self.calculate_errors()
         
-        num_plots = self.errors.shape[1]
-        
-        fig = plt.figure(figsize=(10, min(5 * num_plots, 5*50)))
-        
-        for i in range(num_plots):
-            plt.subplot(num_plots, 1, i + 1)
-            plt.plot(self.errors[:, i])
-            plt.axhline(0, color='red', linestyle='--')
-            plt.xlabel('Sample')
-            plt.ylabel(f'Residuals {i + 1}')
-            plt.title(f'Residuals {i + 1}')
-        
-        plt.tight_layout()
+        plt.figure(figsize=(10, 5))
+        plt.plot(self.errors, label='Residuals')
+        plt.axhline(0, color='red', linestyle='--')
+        plt.title('Residuals')
+        plt.xlabel('Sample')
+        plt.ylabel('Residuals')
+        plt.grid(True)
         plt.show()
-        return fig
-    
+
     def QQ_plot(self):
-        """
-        Generates a QQ plot of the residuals.
-        """
         if self.errors is None:
             self.calculate_errors()
         
-        import scipy.stats as stats
-        
-        num_plots = self.errors.shape[1]
-        
-        fig = plt.figure(figsize=(10, min(5 * num_plots, 5*50)))
-        
-        for i in range(num_plots):
-            plt.subplot(num_plots, 1, i + 1)
-            stats.probplot(self.errors[:, i], dist="norm", plot=plt)
-            plt.title(f'QQ Plot: Residuals {i + 1}')
-        
-        plt.tight_layout()
+        plt.figure(figsize=(10, 5))
+        stats.probplot(self.errors.flatten(), dist="norm", plot=plt)
+        plt.title('QQ Plot: Residuals')
+        plt.grid(True)
         plt.show()
-        return fig
+
+    def general_report(self):
+        """
+        Generates important plots and shows basic statistics for the analysis:
+        - Actual vs Predicted values
+        - Residuals plot
+        - QQ plot of residuals
+        - Displays the intercept and coefficients
+        """
+        print("Generating General Report...\n")
+
+        # Plot Actual vs Predicted
+        print("Plot 1: Actual vs Predicted")
+        self.plot()
+
+        # Plot Residuals
+        print("Plot 2: Residuals")
+        self.plot_residuals()
+
+        # QQ Plot for residuals
+        print("Plot 3: QQ Plot of Residuals")
+        self.QQ_plot()
+
+        # Show coefficients and intercept
+        print("\nModel Coefficients:")
+        print(f"Intercept: {self.intercept}")
+        print(f"Coefficients: {self.coefficients}")
+
+        # Calculate error statistics
+        if self.errors is None:
+            self.calculate_errors()
+        
+        print("\nError Statistics:")
+        print(f"Standard Deviation of Errors: {self.std_dev_error}")
 
     @classmethod
     def from_table(cls, table: Table, columns_x: list[str], columns_y: list[str]) -> 'MultipleLinearRegression':
@@ -155,5 +124,3 @@ class MultipleLinearRegression:
         x = np.array([table.column_dict[column].values for column in columns_x])
         y = np.array([table.column_dict[column].values for column in columns_y])
         return cls(X=x, Y=y)
-
-        
