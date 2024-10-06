@@ -1,10 +1,11 @@
 import pandas as pd
 
-def load_data(uploaded_file, delimiter=','):
+def load_data(lines: list[str], delimiter=','):
     try:
+        print(f'Lines: {" ||| ".join(lines)}')
         # Salvar o arquivo para debug
-        with open("uploaded_file.csv", "wb") as f:
-            f.write(uploaded_file.getbuffer())
+        with open("uploaded_file.csv", "w") as f:
+            f.write("\n".join(lines))
 
         # Ler o arquivo com o delimitador especificado
         df = pd.read_csv("uploaded_file.csv", delimiter=delimiter)
