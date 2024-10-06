@@ -9,6 +9,8 @@ from servicos.csv_parser import check_delimiter_consistency
 import re  # Para verificar links nas colunas
 import tempfile  # Para trabalhar com arquivos temporários
 import os  # Para verificar a existência de arquivos
+from servicos.time_series import TimeSeries
+from servicos.table_class import Table
 
 
 def contains_link(series):
@@ -42,12 +44,14 @@ def main():
             return
 
         df = load_data(uploaded_file)
+        
         if df is not None:
             st.write("Data Loaded:")
             st.write(df)
 
             # Filtra as colunas que contêm links
             df_filtered, columns_with_links = filter_columns_with_links(df)
+            table = Table.from_dataframe(df_filtered)
             if columns_with_links:
                 st.write(f"Columns removed due to links: {columns_with_links}")
 
@@ -102,6 +106,38 @@ def main():
                 st.warning("Please select only two columns for plotting.")
             else:
                 st.warning("Please select two columns to visualize.")
+
+            st.subheader("Plot time series data")
+
+            time_column = st.selectbox("Select time column for time series", table.numeric_columns)
+            time_series_value_columns = st.multiselect("Select value columns for time series", table.numeric_columns)
+
+            frequency = st.number_input("Enter frequency of time series", value=1)
+
+            if not time_series_value_columns or not time_column:
+                st.warning("Please select time column and value columns for time series.")
+            else:
+                serie = TimeSeries.from_table(table, time_column, time_series_value_columns, frequency)
+                st.write("Data:")
+                st.write(serie.data)
+                st.write("Timestamps:")
+                st.write(serie.timestamps)
+                st.write("Descriptive statistics:")
+                st.write(serie.describe())
+                st.write("Trend:")
+                trend = serie.calculate_trend()
+                st.write(trend)
+                st.write("Seasonal decomposition:")
+                trend, seasonal, residual = serie.seasonal_decompose()
+                st.write("Trend:")
+                st.write(trend)
+                st.write("Seasonal:")
+                st.write(seasonal)
+                st.write("Residual:")
+                st.write(residual)
+                st.write("Plot:")
+                serie.plot()
+                st.pyplot()
 
 
 if __name__ == "__main__":
