@@ -57,31 +57,31 @@ def main():
                 st.write(f"Columns removed due to links: {columns_with_links}")
 
             # Sweetviz - Relatório de análise
-            # if not st.session_state.sweetviz_report_generated:  # Gera o relatório apenas uma vez
-            #     st.subheader("Sweetviz Report")
-            #     report = sv.analyze(df_filtered)  # Usando o DataFrame filtrado
-            #     report.show_html("sweetviz_report.html")
-            #     st.session_state.sweetviz_report_generated = True  # Atualiza a variável
+            if not st.session_state.sweetviz_report_generated:  # Gera o relatório apenas uma vez
+                st.subheader("Sweetviz Report")
+                report = sv.analyze(df_filtered)  # Usando o DataFrame filtrado
+                report.show_html("sweetviz_report.html")
+                st.session_state.sweetviz_report_generated = True  # Atualiza a variável
 
-            # # Carregar e exibir o relatório Sweetviz uma única vez
-            # with open("sweetviz_report.html", "r") as f:
-            #     html_content = f.read()
-            #     st.components.v1.html(html_content, height=1000)
+            # Carregar e exibir o relatório Sweetviz uma única vez
+            with open("sweetviz_report.html", "r") as f:
+                html_content = f.read()
+                st.components.v1.html(html_content, height=1000)
 
-            # # Criar um arquivo temporário para AutoViz
-            # with tempfile.NamedTemporaryFile(delete=False, suffix='.csv') as tmp:
-            #     df_filtered.to_csv(tmp.name, index=False)
-            #     tmp_path = tmp.name
+            # Criar um arquivo temporário para AutoViz
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.csv') as tmp:
+                df_filtered.to_csv(tmp.name, index=False)
+                tmp_path = tmp.name
 
-            # # AutoViz
-            # st.subheader("AutoViz Report")
-            # AV = AutoViz_Class()
-            # dft = AV.AutoViz(tmp_path, sep=",")  # Gera gráficos automáticos usando o caminho do arquivo
+            # AutoViz
+            st.subheader("AutoViz Report")
+            AV = AutoViz_Class()
+            dft = AV.AutoViz(tmp_path, sep=",")  # Gera gráficos automáticos usando o caminho do arquivo
             
-            # # Exibir os gráficos gerados pelo AutoViz
-            # for fig in plt.get_fignums():  # Itera sobre as figuras geradas pelo AutoViz
-            #     fig_obj = plt.figure(fig)  # Obtém a figura específica
-            #     st.pyplot(fig_obj)  # Exibe a figura no Streamlit
+            # Exibir os gráficos gerados pelo AutoViz
+            for fig in plt.get_fignums():  # Itera sobre as figuras geradas pelo AutoViz
+                fig_obj = plt.figure(fig)  # Obtém a figura específica
+                st.pyplot(fig_obj)  # Exibe a figura no Streamlit
 
             # Seção para seleção de colunas e geração de gráficos   
             st.subheader("Plot Relationships Between Variables")
