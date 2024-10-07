@@ -90,30 +90,30 @@ class MultipleLinearRegression:
         - Displays the intercept and coefficients
         """
         print("Generating General Report...\n")
-
-        # Plot Actual vs Predicted
-        print("Plot 1: Actual vs Predicted")
-        self.plot()
-
-        # Plot Residuals
-        print("Plot 2: Residuals")
-        self.plot_residuals()
-
-        # QQ Plot for residuals
-        print("Plot 3: QQ Plot of Residuals")
-        self.QQ_plot()
-
-        # Show coefficients and intercept
-        print("\nModel Coefficients:")
-        print(f"Intercept: {self.intercept}")
-        print(f"Coefficients: {self.coefficients}")
-
-        # Calculate error statistics
-        if self.errors is None:
-            self.calculate_errors()
         
-        print("\nError Statistics:")
-        print(f"Standard Deviation of Errors: {self.std_dev_error}")
+        try:
+            self.fit()
+        except Exception as e:
+            print(f"Error fitting the model: {e}")
+            return
+        
+        try: 
+            self.plot()
+        except Exception as e:
+            print(f"Error plotting actual vs predicted: {e}")
+        
+        
+        try:
+            self.plot_residuals()
+        except Exception as e:
+            print(f"Error plotting residuals: {e}")
+        
+        try:
+            self.QQ_plot()
+        except Exception as e:
+            print(f"Error plotting QQ plot: {e}")
+
+        
 
     @classmethod
     def from_table(cls, table: Table, columns_x: list[str], columns_y: list[str]) -> 'MultipleLinearRegression':
