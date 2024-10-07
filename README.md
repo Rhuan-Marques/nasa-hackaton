@@ -48,13 +48,13 @@ app_base/
 ├── parser/
 ├── services/
 │   ├── csv_parser.py
-|   ├── data_loading.py
+│   ├── data_loading.py
 │   ├── multiple_linear_regression.py
-|   ├── process.py
-|   ├── SupportVectorMachine.py
+│   ├── process.py
+│   ├── SupportVectorMachine.py
 │   ├── table_class.py
 │   └── time_series.py
-|   ├── visualization.py
+│   └── visualization.py
 │
 ├── main.py
 ├── requirements.txt
