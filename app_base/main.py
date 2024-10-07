@@ -4,29 +4,28 @@ import sweetviz as sv
 import matplotlib.pyplot as plt
 import seaborn as sns
 from autoviz import AutoViz_Class
-from servicos.data_loading import load_data
-from servicos.csv_parser import check_delimiter_consistency
-import re
 import tempfile
 import os
+import re
+import io  # Adicionado para StringIO
 from servicos.time_series import TimeSeries
 from servicos.table_class import Table
 from servicos.multiple_linear_regression import MultipleLinearRegression
 from servicos.csv_parser import parse_to_csv
 
 def contains_link(series):
-    # Verifica se uma série contém links.
+    """Verifica se uma série contém links."""
     url_pattern = r'(http|https|www)\S*'
     return series.astype(str).apply(lambda x: bool(re.search(url_pattern, x)))
 
 def filter_columns_with_links(df):
-    # Remove colunas que contêm links.
+    """Remove colunas que contêm links."""
     columns_with_links = [col for col in df.columns if contains_link(df[col]).any()]
     return df.drop(columns=columns_with_links), columns_with_links
 
 def main():
     st.title("DataSage - Facilitated Data Analysis")
-    
+
     uploaded_file = st.file_uploader("Choose a CSV file", type=["csv", "txt"])
 
     # Variável para armazenar o DataFrame
@@ -37,10 +36,12 @@ def main():
         st.session_state.sweetviz_report_generated = False
 
     if uploaded_file is not None:
+        # Carregue os dados (substitua pelo seu método de carregamento)
         lines = uploaded_file.read().decode("utf-8").splitlines()
         lines = parse_to_csv(lines)
-
-        df = load_data(lines)
+        
+        # Corrigido para usar StringIO
+        df = pd.read_csv(io.StringIO("\n".join(lines)))
 
         if df is not None:
             st.write("Data Loaded:")
@@ -49,8 +50,6 @@ def main():
             # Filtra as colunas que contêm links
             df_filtered, columns_with_links = filter_columns_with_links(df)
             table = Table.from_dataframe(df_filtered)
-            if columns_with_links:
-                None # Removendo o aviso de colunas com links
 
             # Sidebar for navigation
             st.sidebar.title("Navigation sidebar")
@@ -66,13 +65,16 @@ def main():
                 if not st.session_state.sweetviz_report_generated:
                     st.subheader("Sweetviz Report")
                     report = sv.analyze(df_filtered)
-                    report.show_html("sweetviz_report.html")
+                    report.show_html("sweetviz_report.html", open_browser=False)
                     st.session_state.sweetviz_report_generated = True
+                    st.success("Sweetviz report generated. Click the button below to open it.")
 
-                # Carregar e exibir o relatório Sweetviz uma única vez
-                with open("sweetviz_report.html", "r") as f:
-                    html_content = f.read()
-                    st.components.v1.html(html_content, height=1000)
+                # Verifica se o relatório já foi gerado e mostra o botão
+                if os.path.exists("sweetviz_report.html"):
+                    if st.button("Open Sweetviz Report"):
+                        with open("sweetviz_report.html", "r") as f:
+                            html_content = f.read()
+                            st.components.v1.html(html_content, height=1000, width=2000)
 
             elif analysis_option == "AutoViz Report":
                 # Criar um arquivo temporário para AutoViz
