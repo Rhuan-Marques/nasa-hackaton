@@ -102,7 +102,6 @@ class MultipleLinearRegression:
         except Exception as e:
             print(f"Error plotting actual vs predicted: {e}")
         
-        
         try:
             self.plot_residuals()
         except Exception as e:
