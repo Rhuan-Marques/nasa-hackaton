@@ -145,8 +145,8 @@ def main():
                     st.write("Residual:")
                     st.write(residual)
                     st.write("Plot:")
-                    serie.plot()
-                    st.pyplot()
+                    fig = serie.plot()
+                    st.pyplot(fig)
 
             elif analysis_option == "Plot Multiple Linear Regression":
                 st.subheader("Plot multiple linear regression")

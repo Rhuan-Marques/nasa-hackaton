@@ -123,15 +123,16 @@ class TimeSeries:
         plt.tight_layout()
         plt.show()
     
-    def plot(self):
+    def plot(self) :
         """Plot the time series data."""
-        plt.figure(figsize=(10, 5))
+        fig = plt.figure(figsize=(10, 5))
         plt.plot(self.timestamps, self.data, marker='o', linestyle='-')
         plt.title('Time Series Plot')
         plt.xlabel('Timestamps')
         plt.ylabel('Values')
         plt.grid(True)
         plt.show()
+        return fig
 
     @classmethod
     def from_table(cls, table: Table, time_field: str, value_fields: list[str], frequency: int):

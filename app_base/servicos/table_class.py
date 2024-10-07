@@ -101,6 +101,6 @@ class Table(BaseModel):
         columns = []
         for column_name in df.columns:
 
-            column = Column(name=column_name, values=[val if type(val) == str else "" for val in df[column_name]])
+            column = Column(name=column_name, values=[val if not (type(val) == float and math.isnan(val)) else "" for val in df[column_name]])
             columns.append(column)
         return cls(columns=columns)
