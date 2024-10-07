@@ -9,7 +9,6 @@
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [How to Use](#how-to-use)
-- [Project Structure](#project-structure)
 
 ## Features
 
@@ -41,21 +40,3 @@
 ```streamlit run app_base/main.py```
 7. Upload your CSV file using the file uploader.
 8. Select the analysis option from the sidebar to start exploring your data.
-
-## Project Structure
-app_base/
-│
-├── parser/
-├── services/
-│   ├── csv_parser.py
-│   ├── data_loading.py
-│   ├── multiple_linear_regression.py
-│   ├── process.py
-│   ├── SupportVectorMachine.py
-│   ├── table_class.py
-│   └── time_series.py
-│   └── visualization.py
-│
-├── main.py
-├── requirements.txt
-└── README.md
