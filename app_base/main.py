@@ -157,20 +157,20 @@ def main():
                 linear_regression_x = st.multiselect("Select x columns for linear regression", table.numeric_columns)
                 linear_regression_y = st.multiselect("Select y columns for linear regression", table.numeric_columns)
 
-                with_residuous = st.selectbox("Plot with residuous", ["No", "Simple", "QQPlot"])
-
                 if not linear_regression_x or not linear_regression_y:
                     st.warning("Please select x and y columns for linear regression.")
                 else:
                     mlr = MultipleLinearRegression.from_table(table, linear_regression_x, linear_regression_y)
                     mlr.fit()
-                    if with_residuous == "Simple":
-                        fig = mlr.plot_residuals()
-                    elif with_residuous == "QQPlot":
-                        fig = mlr.QQ_plot()
-                    else:
-                        fig = mlr.plot()
-                    st.pyplot(fig)
+                    #buuton to generate general report
+                    if st.button("Generate General Report"):
+                        figs = mlr.general_report()
+                        if figs is not None:
+                            for fig in figs:
+                                st.pyplot(fig)
+                        else:
+                            st.warning("No figures generated.")
+                    
 
 if __name__ == "__main__":
     main()

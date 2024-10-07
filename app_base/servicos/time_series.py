@@ -99,14 +99,60 @@ class TimeSeries:
         valid_error = error[~np.isnan(error)]
         return np.std(valid_error)
 
+    def __init__(self, data, timestamps, frequency):
+        self.data = data
+        self.timestamps = timestamps
+        self.frequency = frequency
+
     def seasonal_decompose(self):
         """Decompose the time series into trend, seasonal, and residual components."""
         if self.data.ndim != 1:
-            raise ValueError("Seasonal decomposition only supports unidimensional data.")
+            # Chama o método de decomposição especial se os dados não forem unidimensionais
+            return self.special_decompose()
         
         df = pd.DataFrame({'data': self.data}, index=self.timestamps)
         decomposition = seasonal_decompose(df['data'], model='additive', period=self.frequency)
         return decomposition.trend, decomposition.seasonal, decomposition.resid
+
+    def special_decompose(self):
+        """Handle the case where data is multidimensional."""
+        if self.data.ndim < 2:
+            raise ValueError("Data must be at least two-dimensional for special decomposition.")
+
+        trends, seasonals, residuals = [], [], []
+        
+        # Itera sobre cada coluna de dados
+        for i in range(self.data.shape[1]):
+            df = pd.DataFrame({'data': self.data[:, i]}, index=self.timestamps)
+            decomposition = seasonal_decompose(df['data'], model='additive', period=self.frequency)
+            
+            # Renomear as colunas para evitar duplicatas
+            trends.append(decomposition.trend.rename(f'trend_{i}'))
+            seasonals.append(decomposition.seasonal.rename(f'seasonal_{i}'))
+            residuals.append(decomposition.resid.rename(f'residual_{i}'))
+
+        # Converte as listas em arrays numpy
+        return (
+            pd.concat(trends, axis=1),
+            pd.concat(seasonals, axis=1),
+            pd.concat(residuals, axis=1)
+        )
+        
+        # Itera sobre cada coluna de dados
+        for i in range(self.data.shape[1]):
+            df = pd.DataFrame({'data': self.data[:, i]}, index=self.timestamps)
+            decomposition = seasonal_decompose(df['data'], model='additive', period=self.frequency)
+            trends.append(decomposition.trend)
+            seasonals.append(decomposition.seasonal)
+            residuals.append(decomposition.resid)
+
+        # Converte as listas em arrays numpy
+        return (
+            pd.concat(trends, axis=1),
+            pd.concat(seasonals, axis=1),
+            pd.concat(residuals, axis=1)
+        )
+
     def plot_decompose(self):
         """Plot the seasonal decomposition of the time series data."""
         trend, seasonal, residual = self.seasonal_decompose()
