@@ -8,10 +8,10 @@ import tempfile
 import os
 import re
 import io  # Adicionado para StringIO
-from servicos.time_series import TimeSeries
-from servicos.table_class import Table
-from servicos.multiple_linear_regression import MultipleLinearRegression
-from servicos.csv_parser import parse_to_csv
+from services.time_series import TimeSeries
+from services.table_class import Table
+from services.multiple_linear_regression import MultipleLinearRegression
+from services.csv_parser import parse_to_csv
 
 def contains_link(series):
     """Verifica se uma série contém links."""
